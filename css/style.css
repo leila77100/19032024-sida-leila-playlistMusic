@@ -1,0 +1,35 @@
+/*estilos del cuerpo del documento "body"*/
+
+body {
+
+    display: flex; /* modelo de caja flexible dentro del cuerpo del documento*/
+    align-items: center; /* alineamos todo los elemento hijos al centro*/
+    justify-content: center; /*alineamos horizontal al centro*/
+    height: 100vh; /*la altura al cuento al 100% de viewport height*/
+};
+
+/* estilo principal del elemento "container"*/
+
+.container {
+
+    width: 400px; /* ancho del contenedor*/
+
+}
+
+/* Estilo de los elementos de la volumen-container*/
+.volume-container i {
+    margin-right: 5px; /*margen derecho del elemento "i" dentro del contendor a 5 pixel del borde*/
+
+}
+
+/*elementos de clase "time" dentro del  id progreso, card-footer y "volume-container"*/
+
+#progress .time,
+.card-footer,
+.volume-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*distribuimos lois espacios*/
+}
+
+/* estilo del element
