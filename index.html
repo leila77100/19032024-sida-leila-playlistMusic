@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="creation d une Playlist personnelle">
+    <meta name="author" content="Leila SIDA">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Playlist Leila</title>
+</head>
+<body>
+    <!--Contenedor principal de la pagina -->
+    <div class="container">
+        <!--cards del contenedor de reproductor de musica-->
+        <div class="card shadow-lg round">
+            <!--insertar una imagen la caratula (cover) del musica que escuchamos-->
+            <img id="music-image" class="card-img-top">
+            <!--insertar un audio-->
+            <audio id="audio" src=""></audio>
+            <!--contenedor los detalles del musica y el titulo-->
+            <div id="music-details" class="text-center border bottom">
+                <p class="title"></p>
+                <p class="singer"></p>
+            </div>
+<!--contenedor-->
+    <div class="card-body">
+        <!--barra de proceso de la cancion-->
+        <div id="process">
+            <!--barra de proceso-->
+            <input type="range" id="progress-bar" class="form-range">
+            <!--tiempo que dura la cancion-->
+            <div class="time">
+                <!--tiempo actual-->
+                <span id="current-time">00:00</span>
+                <!--tiempo final-->
+                <span id="duration"></span>
+            </div>
+        </div>
+        <!--contenedor de lo controles de reproduccion de la cancion-->
+        <div id="control" class="text-center"></div>
+        <!--boton anterior-->
+        <button id="prev" class="btn btn-primary rounded-circle">
+            <i class="ojoicono"></i>
+        </button>
+         <!--boton play-->
+        <button id="play" class="btn btn-primary rounded-circle btn-lg">
+            <i class="ojoicono"></i>
+        </button>
+         <!--boton siguiente-->
+        <button id="next" class="btn btn-primary rounded-circle">
+            <i class="ojoicono"></i>
+        </button>
+    </div>
+
+        </div>
+    </div>
+</body>
+</html>
