@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../13032024-SIDA-LEILA-XML"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "compartida"
+	}
+}
