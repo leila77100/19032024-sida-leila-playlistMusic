@@ -1,6 +1,6 @@
 //definir una clase music
 
-class musicPlayer {
+class MusicPlayer {
 //constructor recibira la musica de (musicList) argumento
     constructor(musicList){
         this.musicList=musicList //asigna la lista de musica que recibe del atributo MusicList que se encuentra de musicPlayer

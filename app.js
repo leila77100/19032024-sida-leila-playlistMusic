@@ -20,4 +20,35 @@ const volume = document.querySelector("#volume");
 const volumeBar = document.querySelector("#volume-bar");
 const ul = document.querySelector("#ul"); // lista de canciones
 
+//insttancia de la MusicPlayer
+
+const player = new MusicPlayer(musicList);
+// evento dentro del html ejecutar una ventana que me indique el program y las canciones se han cargado
+window.addEventListener("load",()=>{
+    let music = player.getMusic(); // musica actual
+    displayMusic(music); // Mostrar los detalles de la cancion
+    displayMusicList(player.music);// Lista de reproduccion
+    isPlayingNow(); //comprueba si hay musica reproduciendo
+})
+
+function displayMusic(music){
+    // titulo de la cancion
+    title.innerText = music.getName(),
+    //Cantante
+    singer.innerText = music.singer;
+    //imagen
+    image.src = "img/" + music.img;
+    //archivo ogg, wav, mp3
+    audio.src = "music/" 
+}
+
+// Evento  para los botones reproduccion y pausa acciones predefinida (click, mouseover, mousedown)
+
+play.addEventListener("click",()=>{
+    // constante que verifique la musica que se reproduce
+    const isMusicPlay = container.classList.contains("playing")
+    //al darle click de nuevo haga una pausa
+    isMusicPlay? pauseMusic() : playMusic();
+})
+
 
