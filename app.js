@@ -49,6 +49,24 @@ play.addEventListener("click",()=>{
     const isMusicPlay = container.classList.contains("playing")
     //al darle click de nuevo haga una pausa
     isMusicPlay? pauseMusic() : playMusic();
-})
+});
+
+// evento click en los botones prev y next
+
+prev.addEventListener("click",()=>{
+    prevMusic()
+});
+
+next.addEventListener("click",()=>{
+    nextMusic()});
+
+    //acciones que reproduzca la cancion correspondiente anterior
+    const prevMusic = ()=>{};
+    const pnextMusic = ()=>{};
+
+    // acciones para pausar
+
+    const pauseMusic = ()=>{};
+    const playMusic = () => {};
 
 
