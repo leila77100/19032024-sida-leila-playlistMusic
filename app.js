@@ -61,12 +61,62 @@ next.addEventListener("click",()=>{
     nextMusic()});
 
     //acciones que reproduzca la cancion correspondiente anterior
-    const prevMusic = ()=>{};
-    const pnextMusic = ()=>{};
+    const prevMusic = ()=>{
+        player.prev();
+        let music = player.getMusic()
+        displayMusic(music);
+        playMusic();
+        isPlayingNow();
+    };
+
+    //acciones que reproduzca la cancion correspondiente siguiente
+    const nextMusic = ()=>{
+        player.next();
+        let music = player.getMusic()
+        displayMusic(music);
+        playMusic();
+        isPlayingNow();
+    };
+    
 
     // acciones para pausar
+    //tiene que aparecer las 2 || para el pause ---al darle click
+    // tiene que esta asociado a la etiqueta "i"
+    //tiene que parar el playing
+    //audio pausar
+    const pauseMusic = ()=>{
+        container.classList.remove("playing");
+        play.querySelector("i").classList = "fa-solid fa-pause";
+        audio.pausa
+    };
 
-    const pauseMusic = ()=>{};
-    const playMusic = () => {};
+    //acciones para continuar la cancion
+    //volver activar el playing
+    //asocialo a la etiqueta "i"
+    //pasar de || a icono play
+    //
+    const playMusic = () => {container.classList.remove("playing");
+    play.querySelector("i").classList = "fa-solid fa-play";
+    audio.play};
 
+    //calcula el tiempo de tributo minutos: segundos
+    //operacion matematica que calcule los minutos dividido emtre 60
+    //operacion matematica que calcule los segundos en %
+    //operacion que actualice el total de segundos y minutos
+    // nos genere el resultado(00:00) minutos: sugundos
+    // nos lo muestre el calculo
 
+    const calculateTime = (totalSeconds)=>{
+        const seconds = Math.floor(totalSeconds/60);
+        const minutes = Math.floor(totalSeconds %60);
+        const updateMinutes= minutes <10 ? `0 ${minutes}`:`${minutes}`;
+        const result = `${seconds}:${updateMinutes}`;
+        return result
+            
+    }
+
+    //evento que calcula el tiempo de reproduccion y el tiempo de la cancion
+    //"loadmetadata" => Accion
+    //"addEventListener" => metodo event a escuchar
+    audio.addEventListener("loadadmetadata",()=>{/*codigo*/})
+    audio.addEventListener("timeupdate",()=>{/*codigo*/})
