@@ -28,7 +28,7 @@ const player = new MusicPlayer(musicList);
 window.addEventListener("load",()=>{
     let music = player.getMusic(); // musica actual
     displayMusic(music); // Mostrar los detalles de la cancion
-    displayMusicList(player.music);// Lista de reproduccion
+    displayMusicList(player.musicList);// Lista de reproduccion
     isPlayingNow(); //comprueba si hay musica reproduciendo
 });
 
@@ -161,7 +161,7 @@ next.addEventListener("click",()=>{
         }
     });
 // funcion para mostrar la lista de reproduccion
-    const displayMusictest=(list)=>{
+    const displayMusicList=(list)=>{
         for(let i =0; i<list.length; i++){
             let liTag= `
             <li li-index = ${i} onclick= "selectMusic(this)"
@@ -169,8 +169,8 @@ next.addEventListener("click",()=>{
              <span> ${list[i].getName()} </span>
              <span id="music-${i}" class="badge bg-primary rounded-pill"></span>
              <audio class="music/${list[i].file}"></audio> 
-             </li>;
-             `
+             </li>
+             `;
 
              ul.insertAdjacentHTML("beforeend", liTag);
 
