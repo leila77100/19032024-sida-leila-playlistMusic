@@ -32,4 +32,9 @@ body {
     justify-content: space-between; /*distribuimos lois espacios*/
 }
 
-/* estilo del element
+/* estilo del element*/
+
+li.playing{
+    background-color: green ;/*color del fondo de los elementos "li con la clase  playing*/
+    color: #fff; /* color del texto para los elementos "li con la clase playing*/
+}

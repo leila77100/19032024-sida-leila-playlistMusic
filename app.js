@@ -34,13 +34,13 @@ window.addEventListener("load",()=>{
 
 function displayMusic(music){
     // titulo de la cancion
-    title.innerText = music.getName(),
+    title.innerText = music.getName();
     //Cantante
     singer.innerText = music.singer;
     //imagen
     image.src = "img/" + music.img;
     //archivo ogg, wav, mp3
-    audio.src = "music/" 
+    audio.src = "music/" + music.file;
 };
 
 // Evento  para los botones reproduccion y pausa acciones predefinida (click, mouseover, mousedown)
@@ -139,7 +139,69 @@ next.addEventListener("click",()=>{
     progressBar.addEventListener("input",()=>{
         currentTime.textContent =calculateTime(progressBar.value)
         audio.currentTime = progressBar.value;
-    })
-    audio
+    });
+
+    // variable para gestionar a amplitud de audio
+    let soundStatus = "voice";
+
+    volumeBar.addEventListener("input",(e)=>{
+        const value= e.target.value;
+        audio.volume = value/100;
+
+        if(value == 0){
+            audio.muted = true;
+            soundStatus= "silent";
+            volume.classList = "fa-solid fa-volume-xmark"
+        }
+        else{
+            audio.muted = false;
+            soundStatus = "voice";
+            volume.classList = "fa-solid fa-volume-high";
+            volumeBar.value =100
+        }
+    });
+// funcion para mostrar la lista de reproduccion
+    const displayMusictest=(list)=>{
+        for(let i =0; i<list.length; i++){
+            let liTag= `
+            <li li-index = ${i} onclick= "selectMusic(this)"
+             class ="list-group-item d-flex  justify-content-between align-items-center">
+             <span> ${list[i].getName()} </span>
+             <span id="music-${i}" class="badge bg-primary rounded-pill"></span>
+             <audio class="music/${list[i].file}"></audio> 
+             </li>;
+             `
+
+             ul.insertAdjacentHTML("beforeend", liTag);
+
+             let liAudioDuration = ul.querySelector(`#music-${i}`);
+             let liAudioTag = ul.querySelector(`.music-${i}`)
+            liAudioTag.addEventListener("loadeddata",()=> {
+                liAudioDuration.innerText =calculateTime(liAudioTag.duration);
+            })
+    }
+}
+
+const selectMusic=(li)=>{
+    player.index =li.getAttribute("li-index");
+    displayMusic(player.getMusic())
+    playMusic();
+    isPlayingNow();
+}
+
+const isPlayingNow=()=>{
+    for (let li of ul.querySelectorAll("li")){
+        if(li.classList.contains("playing")){
+            li.classList.remove("playing");
+        if(li.getAttribute ("li-index"== player.index)){
+            li.classList.add("playing");
+        }
+    }
+    audio.addEventListener("ended"), ()=>{
+    nextMusic();
+      
+}
+}
+}
 
 

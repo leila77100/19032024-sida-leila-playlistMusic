@@ -18,7 +18,7 @@ class Music{
 }
 
 const musicList =[
-    new Music("No se ve", "OBK", "caratulaobk.jpg", "obk.mp3"),
-    new Music(),
+    new Music("No se ve", "OBK", "guitara.jpg", "Big_One.mp4"),
+    new Music("la vaca lola", "vaca", "musica.jpg", "no_se_ve.mp4"),
 
 ]
