@@ -14,7 +14,7 @@ class MusicPlayer {
 
     // metodo netx() que avanza a la siguiente cancion de lista
     next(){
-        if (this.index + 1 < this.length) //comprueba si en el indice esta dentro del rango de la musica
+        if (this.index + 1 < this.musicList.length) //comprueba si en el indice esta dentro del rango de la musica
        { this.index++;
     }else{
         // si el siguiente indice esta a fuera del rango de la lista de la musica
@@ -26,9 +26,9 @@ class MusicPlayer {
 
     prev(){
         if(this.index !=0)//comprueba el indice anterior de la lista
-        {this.index--}
+        {this.index--;}
         else{// si el indico actual es 0
-            this.index =this.musicList.length -1
+            this.index =this.musicList.length -1;
         }
     }
 }

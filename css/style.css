@@ -6,7 +6,7 @@ body {
     align-items: center; /* alineamos todo los elemento hijos al centro*/
     justify-content: center; /*alineamos horizontal al centro*/
     height: 100vh; /*la altura al cuento al 100% de viewport height*/
-};
+}
 
 /* estilo principal del elemento "container"*/
 
@@ -16,21 +16,23 @@ body {
 
 }
 
-/* Estilo de los elementos de la volumen-container*/
-.volume-container i {
-    margin-right: 5px; /*margen derecho del elemento "i" dentro del contendor a 5 pixel del borde*/
-
-}
-
 /*elementos de clase "time" dentro del  id progreso, card-footer y "volume-container"*/
 
-#progress .time,
+#progress .times,
 .card-footer,
 .volume-container {
     display: flex;
     align-items: center;
     justify-content: space-between; /*distribuimos lois espacios*/
 }
+
+/* Estilo de los elementos de la volumen-container*/
+.volume-container i {
+    margin-right: 5px; /*margen derecho del elemento "i" dentro del contendor a 5 pixel del borde*/
+
+}
+
+
 
 /* estilo del element*/
 

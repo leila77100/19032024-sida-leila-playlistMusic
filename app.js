@@ -1,6 +1,6 @@
 //DOM manejo de los componentes del html manejado por el javascript
 
-const container = document.querySelector("container"); // contenedor principal
+const container = document.querySelector(".container"); // contenedor principal
 const image = document.querySelector("#music-image"); // todos los elementos imagenes
 const title= document.querySelector("#music-details .title"); //titulo
 const singer= document.querySelector("#music-details .singer");//cantante
@@ -18,7 +18,7 @@ const currentTime = document.querySelector("#current-time");
 const progressBar = document.querySelector("#progress-bar");
 const volume = document.querySelector("#volume");
 const volumeBar = document.querySelector("#volume-bar");
-const ul = document.querySelector("#ul"); // lista de canciones
+const ul = document.querySelector("ul"); // lista de canciones
 
 //insttancia de la MusicPlayer
 
@@ -41,7 +41,7 @@ function displayMusic(music){
     image.src = "img/" + music.img;
     //archivo ogg, wav, mp3
     audio.src = "music/" + music.file;
-};
+}
 
 // Evento  para los botones reproduccion y pausa acciones predefinida (click, mouseover, mousedown)
 
@@ -69,7 +69,7 @@ next.addEventListener("click",()=>{
         displayMusic(music);
         playMusic();
         isPlayingNow()
-    };
+    }
 
     //acciones que reproduzca la cancion correspondiente siguiente
     const nextMusic = ()=>{
@@ -77,8 +77,8 @@ next.addEventListener("click",()=>{
         let music = player.getMusic();
         displayMusic(music);
         playMusic();
-        isPlayingNow()
-    };
+        isPlayingNow();
+    }
     
 
     // acciones para pausar
@@ -88,18 +88,19 @@ next.addEventListener("click",()=>{
     //audio pausar
     const pauseMusic = ()=>{
         container.classList.remove("playing");
-        play.querySelector("i").classList = "fa-solid fa-pause";
-        audio.pausa
-    };
+        play.querySelector("i").classList = "fa-solid fa-play";
+        audio.pause();
+    }
 
     //acciones para continuar la cancion
     //volver activar el playing
     //asocialo a la etiqueta "i"
     //pasar de || a icono play
     
-    const playMusic = () => {container.classList.remove("playing");
-    play.querySelector("i").classList = "fa-solid fa-play";
-    audio.play};
+    const playMusic = () => {container.classList.add("playing");
+    play.querySelector("i").classList = "fa-solid fa-pause";
+    audio.play()
+}
 
     //calcula el tiempo de tributo minutos: segundos
     //operacion matematica que calcule los minutos dividido emtre 60
@@ -113,9 +114,9 @@ next.addEventListener("click",()=>{
         const minutes = Math.floor(totalSeconds %60);
         const updateMinutes= minutes <10 ? `0 ${minutes}`:`${minutes}`;
         const result = `${seconds}:${updateMinutes}`;
-        return result
+        return result;
             
-    };
+    }
 
     //evento que calcula el tiempo de reproduccion y el tiempo de la cancion
     //"loadmetadata" => Accion
@@ -123,14 +124,14 @@ next.addEventListener("click",()=>{
     // tengo que solicitar la duracion del audio
     //tengo que solicitar que se mueva junto con el tiempo de la cancion
     audio.addEventListener("loadadmetadata",()=>{
-        duration.textContent=calculateTime(audio.duration)
-       progressBar.max=Math.floor(audio.duration);
+        duration.textContent=calculateTime(audio.duration);
+       progressBar.max = Math.floor(audio.duration);
     });
 
     //progresion de la barra
     //calcul en la anterior funcion y me muestre el valor
     audio.addEventListener("timeupdate",()=>{
-        progressBar.value=Math.floor(currentTime);
+        progressBar.value=Math.floor(audio.currentTime);
         currentTime.textContent = calculateTime(progressBar.value)
     });
 
@@ -157,32 +158,49 @@ next.addEventListener("click",()=>{
             audio.muted = false;
             soundStatus = "voice";
             volume.classList = "fa-solid fa-volume-high";
-            volumeBar.value =100
+            
         }
     });
+
+    volume.addEventListener("click", () => {
+        if(soundStatus==="voice") {
+            audio.muted = true;
+            soundStatus = "silent";
+            volume.classList = "fa-solid fa-volume-xmark";
+            volumeBar.value = 0;
+        } else {
+            audio.muted = false;
+            soundStatus = "voice";
+            volume.classList = "fa-solid fa-volume-high";
+            volumeBar.value = 100;
+        }
+    });
+
+
 // funcion para mostrar la lista de reproduccion
-    const displayMusicList=(list)=>{
-        for(let i =0; i<list.length; i++){
-            let liTag= `
-            <li li-index = ${i} onclick= "selectMusic(this)"
-             class ="list-group-item d-flex  justify-content-between align-items-center">
-             <span> ${list[i].getName()} </span>
-             <span id="music-${i}" class="badge bg-primary rounded-pill"></span>
-             <audio class="music/${list[i].file}"></audio> 
-             </li>
-             `;
+const displayMusicList = (list) => {
+    for(let i=0; i < list.length; i++) {
+        let liTag = `
+            <li li-index='${i}' onclick="selectedMusic(this)" class="list-group-item d-flex justify-content-between align-items-center">
+                <span>${list[i].getName()}</span>
+                <span id="music-${i}" class="badge bg-primary rounded-pill"></span>
+                <audio class="music-${i}" src="music/${list[i].file}"></audio>
+            </li>
+        ;`
 
-             ul.insertAdjacentHTML("beforeend", liTag);
+        ul.insertAdjacentHTML("beforeend", liTag);
 
-             let liAudioDuration = ul.querySelector(`#music-${i}`);
-             let liAudioTag = ul.querySelector(`.music-${i}`)
-            liAudioTag.addEventListener("loadeddata",()=> {
-                liAudioDuration.innerText =calculateTime(liAudioTag.duration);
-            })
+        let liAudioDuration = ul.querySelector(`#music-${i}`);
+        let liAudioTag = ul.querySelector(`.music-${i}`);
+
+        liAudioTag.addEventListener("loadeddata", () => {
+            liAudioDuration.innerText = calculateTime(liAudioTag.duration);
+        });
+
     }
 }
 
-const selectMusic=(li)=>{
+const selectedMusic=(li)=>{
     player.index =li.getAttribute("li-index");
     displayMusic(player.getMusic())
     playMusic();
@@ -192,16 +210,17 @@ const selectMusic=(li)=>{
 const isPlayingNow=()=>{
     for (let li of ul.querySelectorAll("li")){
         if(li.classList.contains("playing")){
-            li.classList.remove("playing");
-        if(li.getAttribute ("li-index"== player.index)){
+            li.classList.remove("playing")}
+
+        if(li.getAttribute ("li-index")== player.index){
             li.classList.add("playing");
         }
     }
-    audio.addEventListener("ended"), ()=>{
+}
+    audio.addEventListener("ended", ()=>{
     nextMusic();
       
-}
-}
-}
+
+})
 
 
