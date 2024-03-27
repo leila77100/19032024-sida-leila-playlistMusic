@@ -6,14 +6,20 @@ body {
     align-items: center; /* alineamos todo los elemento hijos al centro*/
     justify-content: center; /*alineamos horizontal al centro*/
     height: 100vh; /*la altura al cuento al 100% de viewport height*/
+    background: linear-gradient(white, yellow);
 }
+
 
 /* estilo principal del elemento "container"*/
 
 .container {
-
     width: 400px; /* ancho del contenedor*/
+    
+}
 
+/* color de la tarjeta  */
+.container div{
+    background-color: rgba(241, 240, 155, 0.5);
 }
 
 /*elementos de clase "time" dentro del  id progreso, card-footer y "volume-container"*/
@@ -26,17 +32,51 @@ body {
     justify-content: space-between; /*distribuimos lois espacios*/
 }
 
+#progress .times{
+    color: blueviolet;
+    font-weight: bold;
+    font-size: 30px;
+}
+
 /* Estilo de los elementos de la volumen-container*/
 .volume-container i {
     margin-right: 5px; /*margen derecho del elemento "i" dentro del contendor a 5 pixel del borde*/
 
 }
 
-
-
 /* estilo del element*/
 
 li.playing{
-    background-color: green ;/*color del fondo de los elementos "li con la clase  playing*/
+    background-color: violet ;/*color del fondo de los elementos "li con la clase  playing*/
     color: #fff; /* color del texto para los elementos "li con la clase playing*/
+    font-weight: bold;
 }
+
+/* Estilo del singer */
+.singer {
+    font-size: larger;
+    color: blueviolet;
+    font-weight: bold;
+    font-family: cursive;
+ }
+
+ .title {
+    font-family: cursive;
+ }
+
+ .btn-primary {
+    color: blueviolet;
+    background: yellow;
+    border: transparent;
+
+    box-shadow: black 0px 0px 10px;
+ }
+
+ .music-card-img-top{
+    width:100%;
+   
+ }
+
+ input[type=range]::-webkit-slider-thumb {
+    background: violet;
+ }

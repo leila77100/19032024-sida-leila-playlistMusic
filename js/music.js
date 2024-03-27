@@ -18,8 +18,8 @@ class Music{
 }
 
 const musicList =[
-    new Music("No se ve", "OBK", "guitara.jpg", "Big_One.mp4"),
-    new Music("la vaca lola", "vaca", "musica.jpg", "no_se_ve.mp4"),
-    new Music("The First Time Ever I Saw Your Face", "vvvvvvg", "noseve.jpg", "Big_One.mp4"),   
-    new Music("Burbujas de Amor", "Juan Luis", "noseve.jpg", "440.mp3")  
+    new Music("La Vaca Lola", "Comptine Enfant", "la-vaca-lola.jpg", "La_Vaca_Lola.mp3"),
+    new Music("Lundi matin - l'empereur, sa femme et le p'tit prince", "Comptine Enfant", "le-petit-prince.jpg", "le_ptit_prince.mp3"),
+    new Music("Ah les crocodiles", "Comptine Enfant", "crocodile.jpg", "crocodile.mp3"),   
+    new Music("Pirouette, cacahuète - Il était un petit homme", "Comptine Enfant", "pirouette-cacahuete.jpg", "Pirouette_cacahuete.mp3")  
 ];

@@ -47,7 +47,7 @@ function displayMusic(music){
 
 play.addEventListener("click",()=>{
     // constante que verifique la musica que se reproduce
-    const isMusicPlay = container.classList.contains("playing")
+    const isMusicPlay = container.classList.contains("playing");
     //al darle click de nuevo haga una pausa
     isMusicPlay? pauseMusic() : playMusic();
 });
@@ -110,10 +110,10 @@ next.addEventListener("click",()=>{
     // nos lo muestre el calculo
 
     const calculateTime = (totalSeconds)=>{
-        const seconds = Math.floor(totalSeconds/60);
-        const minutes = Math.floor(totalSeconds %60);
-        const updateMinutes= minutes <10 ? `0 ${minutes}`:`${minutes}`;
-        const result = `${seconds}:${updateMinutes}`;
+        const minutes = Math.floor(totalSeconds/60);
+        const seconds = Math.floor(totalSeconds %60);
+        const updateSeconds= seconds <10 ? `0${seconds}`:`${seconds}`;
+        const result = `${minutes}:${updateSeconds}`;
         return result;
             
     }
@@ -123,7 +123,7 @@ next.addEventListener("click",()=>{
     //"addEventListener" => metodo event a escuchar
     // tengo que solicitar la duracion del audio
     //tengo que solicitar que se mueva junto con el tiempo de la cancion
-    audio.addEventListener("loadadmetadata",()=>{
+    audio.addEventListener("loadedmetadata",()=>{
         duration.textContent=calculateTime(audio.duration);
        progressBar.max = Math.floor(audio.duration);
     });
@@ -186,7 +186,7 @@ const displayMusicList = (list) => {
                 <span id="music-${i}" class="badge bg-primary rounded-pill"></span>
                 <audio class="music-${i}" src="music/${list[i].file}"></audio>
             </li>
-        ;`
+        `
 
         ul.insertAdjacentHTML("beforeend", liTag);
 
