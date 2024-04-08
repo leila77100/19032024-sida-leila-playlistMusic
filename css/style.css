@@ -77,6 +77,12 @@ li.playing{
    
  }
 
- input[type=range]::-webkit-slider-thumb {
+ /* designe del range */
+
+ input[type=range]::-webkit-slider-thumb{
     background: violet;
  }
+
+ 
+
+
